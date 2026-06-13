@@ -425,88 +425,6 @@
         .feature-card h3 { margin-bottom: 0.5rem; }
         .feature-card p { font-size: 0.9rem; color: var(--text-light); }
         
-        /* --- 🎮 MINI GAME --- */
-        .game-section {
-            background: #fff;
-            max-width: 800px;
-            margin: 80px auto;
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: var(--shadow-soft);
-            border: 4px solid var(--primary-pink);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .game-area {
-            position: relative;
-            height: 400px;
-            background: linear-gradient(to bottom, #E0F7FA 0%, #FFF9C4 100%);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-top: 20px;
-            cursor: none;
-            touch-action: none;
-            border: 2px solid #fff;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
-        }
-        .game-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 20;
-            transition: opacity 0.3s;
-        }
-        .game-overlay h3 {
-            font-size: 2rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-        }
-        .game-overlay p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-        .player-cat {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
-            z-index: 10;
-            pointer-events: none;
-            transition: transform 0.1s;
-            border-radius: 50%;
-            border: 3px solid #FFE0B2;
-            background: white;
-            overflow: hidden;
-        }
-        .falling-item {
-            position: absolute;
-            font-size: 2rem;
-            z-index: 5;
-            animation: spinItem 2s infinite linear;
-        }
-        @keyframes spinItem {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(10deg); }
-        }
-        .score-board {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            background: var(--primary-pink);
-            padding: 8px 24px;
-            border-radius: 50px;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
         /* --- 💌 FEEDBACK MODAL --- */
         .feedback-modal-overlay {
             position: fixed;
@@ -731,7 +649,7 @@
     <div id="loading-screen">
         <div class="loading-container">
             <div class="loading-image">
-                <img src="assets/images/kali-billi-icon.webp" alt="Pray Loading">
+                <img src="assets/images/IMG_0139.jpeg" alt="Pray Loading">
             </div>
             <div class="loading-text">Pray</div>
             <div class="loading-dots">.</div>
@@ -783,7 +701,7 @@
     <nav class="navbar">
         <a href="#" class="logo">
             <div class="logo-image">
-                <img src="assets/images/kali-billi-icon.webp" alt="Pray">
+                <img src="assets/images/IMG_0139.jpeg" alt="Pray">
             </div>
             <span>Pray</span>
         </a>
@@ -893,30 +811,6 @@
         </div>
     </section>
     
-    <!-- 🎮 Interactive Game -->
-    <section id="game-section" class="game-section">
-        <div class="section-title" style="margin-bottom: 1rem;">
-            <h2>Feed <span style="color: #FF8A65;">Pray</span></h2>
-            <p>Catch the treats (🐟 & 🥛), avoid the water (💧)!</p>
-        </div>
-        <div class="score-board">Score: <span id="game-score">0</span></div>
-        <div id="game-area" class="game-area">
-            <div id="game-start-overlay" class="game-overlay">
-                <h3>Hungry Companion?</h3>
-                <p>Move your mouse to catch treats!</p>
-                <button class="btn btn-primary" onclick="startGame()">Start Game</button>
-            </div>
-            <div id="game-over-overlay" class="game-overlay" style="display: none;">
-                <h3>Full Tummy! 😺</h3>
-                <p>Final Score: <span id="final-score">0</span></p>
-                <button class="btn btn-primary" onclick="startGame()">Play Again</button>
-            </div>
-            <div id="player-cat" class="player-cat">
-                <img src="assets/images/kali-billi-icon.webp" alt="Pray" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
-            </div>
-        </div>
-    </section>
-    
     <!-- Commands Section -->
     <section id="commands" class="commands-section">
         <div class="section-title">
@@ -959,13 +853,9 @@
     <script>
         // --- COMMAND LIST DATA ---
         const commands = {
-            fun: ['/amongus', '/animal', '/animu', '/canvas-filter', '/canvas-misc', '/chat', '/dare', '/hack', '/howdumb', '/howgay', '/kill', '/lick', '/meme', '/pickup'],
-            giveaway: ['/giveaway'],
-            mod: ['/addroleall', '/ban', '/kick', '/lock', '/mute', '/purge', '/removeroleall', '/slowmode', '/unban', '/unlock', '/unmute'],
-            reports: ['/bug-report'],
-            setup: ['/autoreact', '/autoresponder', '/yt-verification-manage', '/yt-verify-setup'],
-            utility: ['/afk', '/avatar', '/bigemoji', '/dice', '/emoji-list', '/help', '/ig', '/invite', '/userinfo']
+            custom: [',setme', ',Pinterest', ',TikTok', ',instagram', ',afk', ',ai', ',play', ',LTC']
         };
+
         // --- INIT ---
         document.addEventListener('DOMContentLoaded', () => {
             // Hide Loading Screen
@@ -991,7 +881,7 @@
                 for (const cmds of Object.values(commands)) {
                     allCmds.push(...cmds);
                 }
-                allCmds.sort().forEach(cmd => {
+                allCmds.forEach(cmd => {
                     const chip = document.createElement('div');
                     chip.className = 'cmd-chip';
                     chip.innerHTML = `
@@ -1002,8 +892,6 @@
                     gridAll.appendChild(chip);
                 });
             }
-            
-            initGameControls();
         });
         
         // --- CLIPBOARD LOGIC ---
@@ -1046,109 +934,6 @@
         }
         if (matchMedia('(pointer:fine)').matches) {
             animateCursor();
-        }
-        
-        // --- 🎮 MINI GAME LOGIC ---
-        let gameActive = false;
-        let gameScore = 0;
-        let gameItems = [];
-        let spawnTimer = null;
-        let gameLoopId = null;
-        const gameArea = document.getElementById('game-area');
-        const player = document.getElementById('player-cat');
-        const scoreEl = document.getElementById('game-score');
-        function initGameControls() {
-            gameArea.addEventListener('mousemove', (e) => {
-                if (!gameActive) return;
-                const rect = gameArea.getBoundingClientRect();
-                let x = e.clientX - rect.left;
-                if (x < 30) x = 30;
-                if (x > rect.width - 30) x = rect.width - 30;
-                player.style.left = x + 'px';
-            });
-            gameArea.addEventListener('touchmove', (e) => {
-                if (!gameActive) return;
-                e.preventDefault(); 
-                const rect = gameArea.getBoundingClientRect();
-                const touch = e.touches[0];
-                let x = touch.clientX - rect.left;
-                if (x < 30) x = 30;
-                if (x > rect.width - 30) x = rect.width - 30;
-                player.style.left = x + 'px';
-            }, { passive: false });
-        }
-        function startGame() {
-            gameActive = true;
-            gameScore = 0;
-            gameItems.forEach(item => item.element.remove());
-            gameItems = [];
-            scoreEl.textContent = '0';
-            document.getElementById('game-start-overlay').style.display = 'none';
-            document.getElementById('game-over-overlay').style.display = 'none';
-            spawnTimer = setInterval(spawnItem, 800);
-            gameLoopId = requestAnimationFrame(gameLoop);
-        }
-        function gameOver() {
-            gameActive = false;
-            clearInterval(spawnTimer);
-            cancelAnimationFrame(gameLoopId);
-            document.getElementById('final-score').textContent = gameScore;
-            document.getElementById('game-over-overlay').style.display = 'flex';
-        }
-        function spawnItem() {
-            if (!gameActive) return;
-            const types = [
-                { icon: 'fas fa-fish', type: 'good', color: '#ff6b6b' },
-                { icon: 'fas fa-bottle-water', type: 'good', color: '#4DD0E1' },
-                { icon: 'fas fa-star', type: 'good', color: '#feca57' },
-                { icon: 'fas fa-droplet', type: 'bad', color: '#1E88E5' }
-            ];
-            const randomType = types[Math.floor(Math.random() * types.length)];
-            const el = document.createElement('div');
-            el.className = 'falling-item';
-            el.innerHTML = `<i class="${randomType.icon}" style="color: ${randomType.color}"></i>`;
-            const startX = Math.random() * (gameArea.clientWidth - 40);
-            el.style.left = startX + 'px';
-            el.style.top = '-40px';
-            gameArea.appendChild(el);
-            gameItems.push({
-                element: el,
-                y: -40,
-                speed: 2 + Math.random() * 2, 
-                type: randomType.type
-            });
-        }
-        function gameLoop() {
-            if (!gameActive) return;
-            const gameRect = gameArea.getBoundingClientRect();
-            for (let i = gameItems.length - 1; i >= 0; i--) {
-                let item = gameItems[i];
-                item.y += item.speed;
-                item.element.style.top = item.y + 'px';
-                const itemX = parseFloat(item.element.style.left);
-                const playerX = parseFloat(player.style.left); 
-                const distY = (gameRect.height - 50) - item.y; 
-                const distX = Math.abs(playerX - (itemX + 15)); 
-                if (distY < 30 && distY > -20 && distX < 40) {
-                    if (item.type === 'good') {
-                        gameScore += 10;
-                        scoreEl.textContent = gameScore;
-                        item.element.style.transform = "scale(1.5)";
-                        item.element.style.opacity = "0";
-                    } else {
-                        gameOver();
-                        return; 
-                    }
-                    setTimeout(() => item.element.remove(), 200);
-                    gameItems.splice(i, 1);
-                    continue;
-                }
-                if (item.y > gameRect.height) {
-                    item.element.remove();
-                    gameItems.splice(i, 1);
-                }
-            }
-            requestAnimationFrame(gameLoop);
         }
         
         function confettiEffect(e) {
